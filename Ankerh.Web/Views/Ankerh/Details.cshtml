@@ -1,0 +1,356 @@
+﻿@model Ankerh.Web.Models.AnkerDTO
+
+@{
+    ViewBag.Title = "FAKTURA BIBLIOTEK:Details";
+}
+
+<h2>FAKTURA BIBLIOTEK</h2>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BilagsNummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BilagsNummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BogføringsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BogføringsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Godkender1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godkender1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Godkender2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Godkender2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FakturaTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FakturaTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FakturaStatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FakturaStatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FakturaGodkenderStatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FakturaGodkenderStatusId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kreditornummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kreditornummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kreditornavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kreditornavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KreditornavnAdr1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KreditornavnAdr1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KreditornavnAdr2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KreditornavnAdr2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KreditornavnAdr3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KreditornavnAdr3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fakturadato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fakturadato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Forfaldsdato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Forfaldsdato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fakturanummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fakturanummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FakturaTekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FakturaTekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sagsnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sagsnummer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SagsNavn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SagsNavn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Afsnit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Afsnit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AfsnitTekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AfsnitTekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aktivitet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktivitet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AktivitetTekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AktivitetTekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.beløb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beløb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Filnavn)
+        </dt>
+
+        <dd>
+            @Html.ActionLink(Model.Filnavn, "GetPdf", new { fileName = Model.Filnavn }, new { target = "_blank" })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bemærkning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bemærkning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GodkendtErudskrevet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GodkendtErudskrevet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtmoprettet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtmoprettet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtmts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtmts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpdateretAf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpdateretAf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpdateringsInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpdateringsInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FakturaStatusNewId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FakturaStatusNewId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpdaterDataFraXalIgen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpdaterDataFraXalIgen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GodkendelsesTypeLåstAfGodk1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GodkendelsesTypeLåstAfGodk1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BeløbUdenMoms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BeløbUdenMoms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtmGodkendt1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtmGodkendt1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtmGodkendt2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtmGodkendt2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtmGodkendtØkonomi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtmGodkendtØkonomi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dtmOpdateretVedGenindlæs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dtmOpdateretVedGenindlæs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinansKontonr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinansKontonr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinansKontoTekst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinansKontoTekst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FakturaGodkenderInitialer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FakturaGodkenderInitialer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtesaOpdateringsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtesaOpdateringsId)
+        </dd>
+
+    </dl>
+</div>

@@ -1,0 +1,123 @@
+﻿@model Ankerh.Web.Models.AnkerData
+
+@{
+    ViewBag.Title = "FAKTURA BIBLIOTEK";
+}
+<h3>FAKTURA BIBLIOTEK</h3>
+<br />
+@using (Html.BeginForm("Data", "Ankerh", new { Token = Model.ContinutationToken, PageSize = 20 }, FormMethod.Get, new { @class = "form-inline", role = "form" }))
+{
+    @section scripts{
+        <script type="text/javascript">
+            $(function () {
+                $(".datefield").datepicker();
+            });
+        </script>
+
+    }
+
+
+    <form class="form-inline">
+        <div class="form-group ">
+            <label for="exampleInputName2">Enter Search</label>
+            <input type="text" class="form-control" name="searchText" placeholder="Enter text here.">
+            @*@Html.TextBox("searchText",Model.SearchText,new { placeholder="Enter text here.", @class="form-control"})*@
+        </div>
+        @*<div class="form-group">
+            <label for="exampleInputEmail2">Start Date</label>
+            <input class="form-control datefield" autocomplete="off" name="startDate" placeholder="mm/dd/yyyy" />
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">End Date</label>
+            <input class="form-control datefield" autocomplete="off" name="endDate" placeholder="mm/dd/yyyy" />
+        </div>*@
+        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn" name="button" value="Clear">Clear Filters</button>
+    </form>
+
+    @*<div class="row">
+            <div class="form-row align-items-center">
+                <div class="col-sm-3 my-1">
+                    <label class="sr-only" for="inlineFormInputName">Search</label>
+                    <input name="searchText" type="text" class="form-control" id="inlineFormInputName" placeholder="Search  Sag nr., Sag Navn, etc.. ">
+                    @Html.TextBox("test", "", new { @class = "datefield" })
+                </div>
+                <div class="col-auto my-1">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn" name="button" value="Clear">Clear Filters</button>
+                </div>
+            </div>
+        </div>*@
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Sag nr.
+        </th>
+        <th>
+            Sag Navn
+        </th>
+        <th>
+            Afsnit
+        </th>
+        <th>
+            Aktivitet
+        </th>
+        <th>
+            Kreditor nr.
+        </th>
+        <th>
+            Kreditornavn
+        </th>
+        <th>
+            Fak. Dato
+        </th>
+        <th>
+            File Navn
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sagsnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SagsNavn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AfsnitTekst)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.AktivitetTekst)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Kreditornummer)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Kreditornavn)
+            </td>
+            <td style="width:90px;">
+                @item.Fakturadato.ToString("dd-MM-yyyy")
+            </td>
+
+            <td>
+                @Html.ActionLink(item.Filnavn, "GetPdf", new { fileName = item.Filnavn }, new { target = "_blank" })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { target = "_blank" })
+            </td>
+        </tr>
+    }
+
+</table>
+@if (!string.IsNullOrEmpty(Model.ContinutationToken) && (Model.Items != null && Model.Items.Count >= 20))
+{
+    @Html.ActionLink("Next", "Data", new { Token = Model.ContinutationToken, PageSize = 20, StartDate = Model.StartDate, EndDate = Model.EndDate, SearchText = Model.SearchText })
+}
