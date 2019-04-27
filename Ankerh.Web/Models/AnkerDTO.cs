@@ -69,9 +69,16 @@ namespace Ankerh.Web.Models
     {
         public string Token { get; set; }
         public int PageSize { get; set; } = 20;
-        public string SearchText { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
+        public string BilagsNummer { get; set; }
+        public string Sagsnummer { get; set; }
+        public string SagsNavn { get; set; }
+        public string AfsnitTekst { get; set; }
+        public string AktivitetTekst { get; set; }
+        public string Kreditornummer { get; set; }
+        public string Kreditornavn { get; set; }
+        public string Filnavn { get; set; }
     }
 }

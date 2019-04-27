@@ -39,40 +39,41 @@ namespace Ankerh.Web.Controllers
         {
 
             Expression<Func<AnkerDTO, bool>> predicate = null;
-            if (button != "Clear")
+            if (button == "Clear")
             {
-                if (!string.IsNullOrEmpty(request.SearchText) && (request.StartDate.HasValue && request.EndDate.HasValue))
-                {
+                request = new AnkerhRequest();
+                //if (!string.IsNullOrEmpty(request.SearchText) && (request.StartDate.HasValue && request.EndDate.HasValue))
+                //{
 
-                    predicate = p =>
-                    (p.Sagsnummer == request.SearchText
-                    || p.SagsNavn.Contains(request.SearchText)
-                    || p.AfsnitTekst.Contains(request.SearchText)
-                    || p.AktivitetTekst.Contains(request.SearchText)
-                    || p.Kreditornummer == request.SearchText
-                    || p.Kreditornavn.Contains(request.SearchText)
-                    || p.Filnavn.Contains(request.SearchText))
-                    && p.Fakturadato >= request.StartDate.Value && p.Fakturadato <= request.EndDate.Value.AddDays(1);
+                //    predicate = p =>
+                //    (p.Sagsnummer == request.SearchText
+                //    || p.SagsNavn.Contains(request.SearchText)
+                //    || p.AfsnitTekst.Contains(request.SearchText)
+                //    || p.AktivitetTekst.Contains(request.SearchText)
+                //    || p.Kreditornummer == request.SearchText
+                //    || p.Kreditornavn.Contains(request.SearchText)
+                //    || p.Filnavn.Contains(request.SearchText))
+                //    && p.Fakturadato >= request.StartDate.Value && p.Fakturadato <= request.EndDate.Value.AddDays(1);
 
-                }
-                else if (!string.IsNullOrEmpty(request.SearchText))
-                {
-                    predicate = p =>
-                 (p.Sagsnummer == request.SearchText
-                 || p.SagsNavn.Contains(request.SearchText)
-                 || p.AfsnitTekst.Contains(request.SearchText)
-                 || p.AktivitetTekst.Contains(request.SearchText)
-                 || p.Kreditornummer == request.SearchText
-                 || p.Kreditornavn.Contains(request.SearchText)
-                 || p.Filnavn.Contains(request.SearchText));
-                }
-                else if ((request.StartDate.HasValue && request.EndDate.HasValue))
-                {
-                    predicate = p => p.Fakturadato >= request.StartDate.Value && p.Fakturadato <= request.EndDate.Value.AddDays(1);
-                }
+                //}
+                //else if (!string.IsNullOrEmpty(request.SearchText))
+                //{
+                //    predicate = p =>
+                // (p.Sagsnummer == request.SearchText
+                // || p.SagsNavn.Contains(request.SearchText)
+                // || p.AfsnitTekst.Contains(request.SearchText)
+                // || p.AktivitetTekst.Contains(request.SearchText)
+                // || p.Kreditornummer == request.SearchText
+                // || p.Kreditornavn.Contains(request.SearchText)
+                // || p.Filnavn.Contains(request.SearchText));
+                //}
+                //else if ((request.StartDate.HasValue && request.EndDate.HasValue))
+                //{
+                //    predicate = p => p.Fakturadato >= request.StartDate.Value && p.Fakturadato <= request.EndDate.Value.AddDays(1);
+                //}
             }
-            var data = await DocumentDBRepository<AnkerDTO>.GetItemsAsync(predicate, request.PageSize, request.Token);
-            data.SearchText = request.SearchText;
+            var data = await DocumentDBRepository<AnkerDTO>.GetItemsAsync(request, request.PageSize, request.Token);
+          //  data.SearchText = request.SearchText;
             data.StartDate = request.StartDate;
             data.EndDate = request.EndDate;
             return View(data);

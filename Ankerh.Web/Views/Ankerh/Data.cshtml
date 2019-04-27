@@ -15,25 +15,71 @@
         </script>
 
     }
-
-
-    <form class="form-inline">
-        <div class="form-group ">
-            <label for="exampleInputName2">Enter Search</label>
-            <input type="text" class="form-control" name="searchText" placeholder="Enter text here.">
-            @*@Html.TextBox("searchText",Model.SearchText,new { placeholder="Enter text here.", @class="form-control"})*@
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="BilagsNummer" placeholder="Enter Bilags nr">
+            </div>
         </div>
-        @*<div class="form-group">
-            <label for="exampleInputEmail2">Start Date</label>
-            <input class="form-control datefield" autocomplete="off" name="startDate" placeholder="mm/dd/yyyy" />
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="Sagsnummer" placeholder="Enter Sag nr.">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputEmail2">End Date</label>
-            <input class="form-control datefield" autocomplete="off" name="endDate" placeholder="mm/dd/yyyy" />
-        </div>*@
-        <button type="submit" class="btn btn-primary">Search</button>
-        <button type="submit" class="btn" name="button" value="Clear">Clear Filters</button>
-    </form>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="SagsNavn" placeholder="Enter Sag Navn">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="AfsnitTekst" placeholder="Enter Afsnit">
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="AktivitetTekst" placeholder="Enter Aktivitet">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="Kreditornummer" placeholder="Enter Kreditor nr.">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="Kreditornavn" placeholder="Enter Kreditornavn">
+            </div>
+        </div>
+        <div class="col-lg-3">
+           
+          
+        </div>
+    </div>
+    <div class="row" style="margin-top:5px">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input class="form-control datefield" autocomplete="off" name="startDate" placeholder="mm/dd/yyyy" />
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input class="form-control datefield" autocomplete="off" name="endDate" placeholder="mm/dd/yyyy" />
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <input type="text" class="form-control" name="Filnavn" placeholder="Enter File Navn">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn" name="button" value="Clear">Clear Filters</button>
+        </div>
+    </div>
+ 
 
     @*<div class="row">
             <div class="form-row align-items-center">
@@ -52,6 +98,9 @@
 <br />
 <table class="table">
     <tr>
+        <th>
+            Bilags nr.
+        </th>
         <th>
             Sag nr.
         </th>
@@ -82,6 +131,9 @@
     @foreach (var item in Model.Items)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BilagsNummer)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sagsnummer)
             </td>
@@ -119,5 +171,5 @@
 </table>
 @if (!string.IsNullOrEmpty(Model.ContinutationToken) && (Model.Items != null && Model.Items.Count >= 20))
 {
-    @Html.ActionLink("Next", "Data", new { Token = Model.ContinutationToken, PageSize = 20, StartDate = Model.StartDate, EndDate = Model.EndDate, SearchText = Model.SearchText })
+    @Html.ActionLink("Next", "Data", new { Token = Model.ContinutationToken, PageSize = 20 })
 }
