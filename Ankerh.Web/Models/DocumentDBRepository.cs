@@ -72,7 +72,7 @@ namespace Ankerh.Web.Models
             var parms = new SqlParameterCollection();
             if (request.StartDate.HasValue && request.EndDate.HasValue)
             {
-                filters.Append(" c.Fakturadato between @startDate and @endDate");
+                filters.Append(" (c.Fakturadato between @startDate and @endDate)");
                 parms.Add(new SqlParameter("@startDate", request.StartDate));
                 parms.Add(new SqlParameter("@endDate", request.EndDate.Value.AddDays(1)));
             }
